@@ -1,13 +1,9 @@
 def call() {
-    node {
-      dir('./java-tomcat-sample'){
-        sh 'ls'
-        sh 'pwd'
-        sh '''
-          mvn versions:set -DnewVersion="${VERSION_SUFFIX}"-SNAPSHOT
-          mvn versions:update-child-modules
-          mvn clean package
-      '''
-    }
+  node {
+      sh '''
+        mvn -f java-tomcat-sample/pom.xml versions:set -DnewVersion="${VERSION_SUFFIX}"-SNAPSHOT
+        mvn -f java-tomcat-sample/pom.xml versions:update-child-modules
+        mvn -f java-tomcat-sample/pom.xml clean package
+    '''
   }
 }
