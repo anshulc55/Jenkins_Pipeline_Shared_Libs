@@ -1,6 +1,6 @@
 def call(Map config) {
     node {
-      echo ${config.message}
+      echo "${config.message}"
       sh '''
         git version
         java -version
